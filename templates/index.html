@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>California Housing Price Prediction API</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; }
+        h1, h2 { color: #333; }
+        code { background-color: #f4f4f4; padding: 2px 4px; border-radius: 4px; }
+        pre { background: #f4f4f4; padding: 10px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <h1>California Housing Price Prediction API</h1>
+    <p>This API predicts house prices in California using a tuned Random Forest model.</p>
+    
+    <h2>Project Overview</h2>
+    <ul>
+        <li><strong>Training:</strong> The model was trained on the California Housing dataset with extensive preprocessing and tuning.</li>
+        <li><strong>Model Persistence:</strong> The model is saved as <code>tuned_rf_model.joblib</code> and is loaded lazily with memory mapping.</li>
+        <li><strong>Endpoints:</strong>
+            <ul>
+                <li><code>GET /</code> - This landing page.</li>
+                <li><code>POST /predict</code> - Returns predicted price given input features in JSON format.</li>
+            </ul>
+        </li>
+    </ul>
+    
+    <h2>How to Test the API</h2>
+    <h3>Using <code>curl</code>:</h3>
+    <pre>
+curl -X POST "https://rehan-khan-soulai.onrender.com/predict" \
+-H "Content-Type: application/json" \
+-d '{
+      "MedInc": 8.0,
+      "HouseAge": 30,
+      "AveRooms": 5.0,
+      "AveBedrms": 1.0,
+      "Population": 1000,
+      "AveOccup": 3.0,
+      "Latitude": 37.0,
+      "Longitude": -120.0
+    }'
+    </pre>
+    
+    <h3>Using PowerShell (<code>Invoke-RestMethod</code>):</h3>
+    <pre>
+Invoke-RestMethod -Method Post `
+    -Uri "https://rehan-khan-soulai.onrender.com/predict" `
+    -ContentType "application/json" `
+    -Body '{"MedInc": 8.0, "HouseAge": 30, "AveRooms": 5.0, "AveBedrms": 1.0, "Population": 1000, "AveOccup": 3.0, "Latitude": 37.0, "Longitude": -120.0}'
+    </pre>
+    
+    <h2>Sample JSON Request Format</h2>
+    <pre>
+{
+  "MedInc": 8.0,
+  "HouseAge": 30,
+  "AveRooms": 5.0,
+  "AveBedrms": 1.0,
+  "Population": 1000,
+  "AveOccup": 3.0,
+  "Latitude": 37.0,
+  "Longitude": -120.0
+}
+    </pre>
+    
+    <h2>Additional Information</h2>
+    <p>This project demonstrates end-to-end MLOps practices including data preprocessing, model training, model persistence, and API deployment using Docker and Render.</p>
+</body>
+</html>
