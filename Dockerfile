@@ -1,11 +1,10 @@
-cat > Dockerfile << 'EOF'
 # Use an official lightweight Python runtime as a parent image
 FROM python:3.9-slim
 
 # Set the working directory in the container
 WORKDIR /app
 
-# Install build tools (if needed) and clean up afterward
+# Install build tools and clean up afterward
 RUN apt-get update && apt-get install -y --no-install-recommends gcc && \
     rm -rf /var/lib/apt/lists/*
 
@@ -23,4 +22,3 @@ EXPOSE 5000
 
 # Use Gunicorn to serve the Flask application on port 5000
 CMD ["gunicorn", "-b", "0.0.0.0:5000", "app:app"]
-EOF
