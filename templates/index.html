@@ -9,6 +9,8 @@
         pre { background: #f4f4f4; padding: 10px; border-radius: 4px; }
         a { color: #1a0dab; text-decoration: none; }
         a:hover { text-decoration: underline; }
+        .button { display: inline-block; padding: 10px 20px; margin-top: 20px; background-color: #1a73e8; color: white; border-radius: 4px; text-decoration: none; }
+        .button:hover { background-color: #1669c1; }
     </style>
 </head>
 <body>
@@ -21,12 +23,12 @@
         This project demonstrates an end-to-end machine learning pipeline using the California Housing dataset. The model was built and tuned using RandomForestRegressor, with extensive data preprocessing and feature engineering. The trained model is saved as <code>tuned_rf_model.joblib</code> and is loaded lazily with memory mapping to improve resource usage.
     </p>
     <p>
-        The API is deployed using Flask, Docker, and Render. It provides two main endpoints:
+        The API is deployed using Flask, Docker, and Render. It provides three main endpoints:
     </p>
     <ul>
-        <li><code>GET /</code> – The landing page with project details, API usage instructions, and testing examples.</li>
+        <li><code>GET /</code> – This landing page with project details, API usage instructions, and testing examples.</li>
         <li><code>POST /predict</code> – Accepts JSON input and returns a predicted house price.</li>
-        <li><code>GET/POST /predictui</code> – An interactive UI that lets you input feature values via a web form and view predictions directly.</li>
+        <li><code>GET/POST /predictui</code> – An interactive UI that lets you enter feature values via a web form and view predictions dynamically.</li>
     </ul>
     
     <h2>GitHub Repository</h2>
@@ -63,19 +65,9 @@ Invoke-RestMethod -Method Post `
     
     <h3>Interactive UI</h3>
     <p>
-        For a more user-friendly approach, click <a href="/predictui">here</a> to use the interactive UI. This page provides a form where you can enter the following values:
+        For a more user-friendly approach, click the button below to access the interactive UI. On that page, you'll be able to enter feature values via a web form and receive predictions dynamically.
     </p>
-    <ul>
-        <li>MedInc (Median Income)</li>
-        <li>HouseAge (House Age)</li>
-        <li>AveRooms (Average Rooms)</li>
-        <li>AveBedrms (Average Bedrooms)</li>
-        <li>Population</li>
-        <li>AveOccup (Average Occupancy)</li>
-        <li>Latitude</li>
-        <li>Longitude</li>
-    </ul>
-    <p>Fill out the form and submit to receive a predicted house price.</p>
+    <a href="/predictui" class="button">Try Interactive Prediction UI</a>
     
     <h2>Sample JSON Request Format</h2>
     <pre>
@@ -93,7 +85,7 @@ Invoke-RestMethod -Method Post `
     
     <h2>Additional Information</h2>
     <p>
-        This project is a demonstration of MLOps practices including data preprocessing, model training, model persistence, and deployment using Docker and Render. You can find more details, documentation, and the code in the GitHub repository linked above.
+        This project demonstrates MLOps practices including data preprocessing, model training, model persistence, and deployment using Docker and Render. For more details, documentation, and the code, please refer to the GitHub repository linked above.
     </p>
 </body>
 </html>
