@@ -3,7 +3,7 @@ import joblib
 import numpy as np
 
 app = Flask(__name__)
-model = None
+model = None  # global variable for lazy loading
 
 def load_model():
     global model
@@ -24,6 +24,8 @@ def predict():
         return jsonify({'predicted_price': prediction})
     except Exception as e:
         return jsonify({'error': str(e)})
+
+# No need for if __name__ == '__main__' in production.
 
 
 
