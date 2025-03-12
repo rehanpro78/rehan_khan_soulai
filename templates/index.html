@@ -1,35 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
     <title>California Housing Price Prediction API</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; }
         h1, h2 { color: #333; }
         code { background-color: #f4f4f4; padding: 2px 4px; border-radius: 4px; }
         pre { background: #f4f4f4; padding: 10px; border-radius: 4px; }
-        a { color: #0066cc; text-decoration: none; }
+        a { color: #1a0dab; text-decoration: none; }
         a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
     <h1>California Housing Price Prediction API</h1>
-    <p>Welcome to the California Housing Price Prediction API. This service uses a tuned Random Forest model to predict house prices in California.</p>
+    <p>Developed by <strong>Rehan Khan</strong>.</p>
+    <p>For inquiries, please email: <a href="mailto:rehankhanpro78@gmail.com">rehankhanpro78@gmail.com</a></p>
     
     <h2>Project Overview</h2>
+    <p>
+        This project demonstrates an end-to-end machine learning pipeline using the California Housing dataset. The model was built and tuned using RandomForestRegressor, with extensive data preprocessing and feature engineering. The trained model is saved as <code>tuned_rf_model.joblib</code> and is loaded lazily with memory mapping to improve resource usage.
+    </p>
+    <p>
+        The API is deployed using Flask, Docker, and Render. It provides two main endpoints:
+    </p>
     <ul>
-        <li><strong>Training:</strong> The model was trained on the California Housing dataset with extensive preprocessing and hyperparameter tuning.</li>
-        <li><strong>Model Persistence:</strong> The model is saved as <code>tuned_rf_model.joblib</code> and is loaded lazily using memory mapping for efficiency.</li>
-        <li><strong>Endpoints:</strong>
-            <ul>
-                <li><code>GET /</code> - This landing page.</li>
-                <li><code>POST /predict</code> - Returns predicted price given input features in JSON format.</li>
-            </ul>
-        </li>
+        <li><code>GET /</code> – The landing page with project details, API usage instructions, and testing examples.</li>
+        <li><code>POST /predict</code> – Accepts JSON input and returns a predicted house price.</li>
+        <li><code>GET/POST /predictui</code> – An interactive UI that lets you input feature values via a web form and view predictions directly.</li>
     </ul>
     
+    <h2>GitHub Repository</h2>
+    <p>
+        View the complete project on GitHub: <a href="https://github.com/rehanpro78/rehan_khan_soulai">https://github.com/rehanpro78/rehan_khan_soulai</a>
+    </p>
+    
     <h2>How to Test the API</h2>
-    <h3>Using <code>curl</code>:</h3>
+    <p>You can test the API using several methods. Here are some examples:</p>
+    
+    <h3>Using cURL</h3>
     <pre>
 curl -X POST "https://rehan-khan-soulai.onrender.com/predict" \
 -H "Content-Type: application/json" \
@@ -45,7 +53,7 @@ curl -X POST "https://rehan-khan-soulai.onrender.com/predict" \
     }'
     </pre>
     
-    <h3>Using PowerShell (<code>Invoke-RestMethod</code>):</h3>
+    <h3>Using PowerShell (<code>Invoke-RestMethod</code>)</h3>
     <pre>
 Invoke-RestMethod -Method Post `
     -Uri "https://rehan-khan-soulai.onrender.com/predict" `
@@ -53,24 +61,21 @@ Invoke-RestMethod -Method Post `
     -Body '{"MedInc": 8.0, "HouseAge": 30, "AveRooms": 5.0, "AveBedrms": 1.0, "Population": 1000, "AveOccup": 3.0, "Latitude": 37.0, "Longitude": -120.0}'
     </pre>
     
-    <h3>Using Postman</h3>
-    <ol>
-        <li>Set the request type to <strong>POST</strong> and the URL to <code>https://rehan-khan-soulai.onrender.com/predict</code>.</li>
-        <li>Set the <strong>Content-Type</strong> header to <code>application/json</code>.</li>
-        <li>Select <strong>raw</strong> in the body and paste the following JSON:
-            <pre>{
-  "MedInc": 8.0,
-  "HouseAge": 30,
-  "AveRooms": 5.0,
-  "AveBedrms": 1.0,
-  "Population": 1000,
-  "AveOccup": 3.0,
-  "Latitude": 37.0,
-  "Longitude": -120.0
-}</pre>
-        </li>
-        <li>Send the request and view the response.</li>
-    </ol>
+    <h3>Interactive UI</h3>
+    <p>
+        For a more user-friendly approach, click <a href="/predictui">here</a> to use the interactive UI. This page provides a form where you can enter the following values:
+    </p>
+    <ul>
+        <li>MedInc (Median Income)</li>
+        <li>HouseAge (House Age)</li>
+        <li>AveRooms (Average Rooms)</li>
+        <li>AveBedrms (Average Bedrooms)</li>
+        <li>Population</li>
+        <li>AveOccup (Average Occupancy)</li>
+        <li>Latitude</li>
+        <li>Longitude</li>
+    </ul>
+    <p>Fill out the form and submit to receive a predicted house price.</p>
     
     <h2>Sample JSON Request Format</h2>
     <pre>
@@ -86,14 +91,9 @@ Invoke-RestMethod -Method Post `
 }
     </pre>
     
-    <h2>Developer Information</h2>
-    <ul>
-        <li><strong>Name:</strong> Rehan Khan</li>
-        <li><strong>Email:</strong> <a href="mailto:rehankhanpro78@gmail.com">rehankhanpro78@gmail.com</a></li>
-        <li><strong>GitHub Repository:</strong> <a href="https://github.com/rehanpro78/rehan_khan_soulai/" target="_blank">https://github.com/rehanpro78/rehan_khan_soulai/</a></li>
-    </ul>
-    
     <h2>Additional Information</h2>
-    <p>This project demonstrates end-to-end MLOps practices including data preprocessing, model training, model persistence using Joblib with memory mapping, and API deployment using Docker on Render.</p>
+    <p>
+        This project is a demonstration of MLOps practices including data preprocessing, model training, model persistence, and deployment using Docker and Render. You can find more details, documentation, and the code in the GitHub repository linked above.
+    </p>
 </body>
 </html>
